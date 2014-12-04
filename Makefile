@@ -1,7 +1,7 @@
 CXXFLAGS=-Werror -Wall -g
 
-jsonxx.so: jsonxx.o
-	g++  ${CXXFLAGS} -Wl,-soname,libjsonxx.so --shared jsonxx.o -o libjsonxx.so
+libjsonxx.a : jsonxx.o
+	ar rs libjsonxx.a jsonxx.o
 
 jsonxx_test: jsonxx_test.cc jsonxx.o
 
@@ -13,5 +13,4 @@ test: jsonxx_test
 
 .PHONY: clean
 clean:
-	rm -f libjsonxx.so jsonxx_test *.o *~
-
+	rm -f jsonxx_test libjsonxx.a *.o *~
